@@ -1,35 +1,26 @@
+// Wait for the DOM to be fully loaded before executing the code
 document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scroll functionality for navigation links
   const links = document.querySelectorAll("nav ul li a");
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const targetID = link.getAttribute("href").substring(1);
       const targetElement = document.getElementById(targetID);
-
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+  // Toggle and show/hide functionality for card elements
   const cards = document.querySelectorAll(".cards");
-
   cards.forEach((firstCard) => {
     const card = firstCard.querySelectorAll(".card");
-
     card.forEach((childCard) => {
       childCard.addEventListener("click", (e) => {
         e.preventDefault();
-
         childCard.classList.toggle("active");
-
-        if (card.classList.contains("active")) {
-          childCard.classList.remove("active");
-        } else {
-          childCard.classList.add("active");
-        }
         const generalText = childCard.querySelector(".general-text");
         if (generalText.style.display === "block") {
           generalText.style.display = "none";
@@ -39,90 +30,58 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
-// swiper
 
-const data = {
-  results: [
-    {
-      image: "images/person1.jpg",
-      name: "Jennifer 1",
-    },
-    {
-      image: "images/person2.jpg",
-      name: "Jennifer 2",
-    },
-    {
-      image: "images/person3.jpg",
-      name: "Jennifer 3",
-    },
-    {
-      image: "images/person4.jpg",
-      name: "Jennifer 4",
-    },
-    {
-      image: "images/person3.jpg",
-      name: "Jennifer 5",
-    },
-    {
-      image: "images/person2.jpg",
-      name: "Jennifer 6",
-    },
-  ],
-};
+  // Display teacher information using Swiper.js
+  async function displayTeachers() {
+    const teachers = data.results;
+    teachers.forEach((result) => {
+      const div = document.createElement("div");
+      div.classList.add("swiper-slide");
+      div.innerHTML = `
+        <img src="${result.image}" alt="" />
+        <h3>${result.name}</h3>
+      `;
+      document.querySelector(".swiper-wrapper").appendChild(div);
+      initSwiper();
+    });
+  }
 
-async function displayTeachers() {
-  const teachers = data.results;
-
-  teachers.forEach((result) => {
-    const div = document.createElement("div");
-    div.classList.add("swiper-slide");
-
-    div.innerHTML = `
-    <img src="${result.image}" alt="" />
-    <h3>${result.name}</h3>
-    `;
-    document.querySelector(".swiper-wrapper").appendChild(div);
-    initSwiper();
-  });
-}
-function initSwiper() {
-  const swiper = new Swiper(".swiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    freeMode: true,
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      500: {
-        slidesPerView: 2,
+  // Initialize Swiper.js for the teacher slider
+  function initSwiper() {
+    const swiper = new Swiper(".swiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      freeMode: true,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
       },
-      700: {
-        slidesPerView: 3,
+      breakpoints: {
+        500: {
+          slidesPerView: 2,
+        },
+        700: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
       },
-      1200: {
-        slidesPerView: 4,
-      },
-    },
-  });
-}
-document.addEventListener("DOMContentLoaded", displayTeachers);
+    });
+  }
 
-// pop-up
-
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".login , .sign-up");
-
+  // Display a pop-up when login or sign-up buttons are clicked
+  const buttons = document.querySelectorAll(".login, .sign-up");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      document.getElementById("pop-up").style.display = "grid";
-      document.getElementById("pop-up").style.transition = "all 0.5s";
+      const popup = document.getElementById("pop-up");
+      popup.style.display = "grid";
+      popup.style.transition = "all 0.5s";
       document.querySelector(".icons").addEventListener("click", () => {
-        document.getElementById("pop-up").style.display = "none";
+        popup.style.display = "none";
       });
     });
   });
+  displayTeachers();
 });
