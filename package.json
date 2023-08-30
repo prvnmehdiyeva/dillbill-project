@@ -14,7 +14,7 @@
   "dependencies": {
     "sass": "^1.66.1"
   },
-  "description": "",
+  "description": "Learn about DillBill course and speak in English",
   "devDependencies": {
     "node-sass": "^9.0.0"
   }
