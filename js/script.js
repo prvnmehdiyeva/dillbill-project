@@ -1,3 +1,31 @@
+const data = {
+  results: [
+    {
+      image: "images/person1.jpg",
+      name: "Jennifer 1",
+    },
+    {
+      image: "images/person2.jpg",
+      name: "Jennifer 2",
+    },
+    {
+      image: "images/person3.jpg",
+      name: "Jennifer 3",
+    },
+    {
+      image: "images/person4.jpg",
+      name: "Jennifer 4",
+    },
+    {
+      image: "images/person3.jpg",
+      name: "Jennifer 5",
+    },
+    {
+      image: "images/person2.jpg",
+      name: "Jennifer 6",
+    },
+  ],
+};
 // Wait for the DOM to be fully loaded before executing the code
 document.addEventListener("DOMContentLoaded", () => {
   // Smooth scroll functionality for navigation links
