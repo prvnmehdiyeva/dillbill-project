@@ -1,3 +1,4 @@
 # Ignore JSON files
-*.json
+*package.json
+*package-lock.json
 node_modules

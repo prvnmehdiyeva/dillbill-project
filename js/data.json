@@ -1,0 +1,26 @@
+[
+  {
+    "image": "images/person1.jpg",
+    "name": "Jennifer 1"
+  },
+  {
+    "image": "images/person2.jpg",
+    "name": "Jennifer 2"
+  },
+  {
+    "image": "images/person3.jpg",
+    "name": "Jennifer 3"
+  },
+  {
+    "image": "images/person4.jpg",
+    "name": "Jennifer 4"
+  },
+  {
+    "image": "images/person3.jpg",
+    "name": "Jennifer 5"
+  },
+  {
+    "image": "images/person2.jpg",
+    "name": "Jennifer 6"
+  }
+]
